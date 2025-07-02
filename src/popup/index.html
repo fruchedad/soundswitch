@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundSwitch</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>SoundSwitch</h1>
+      <span class="version">v1.0.0</span>
+    </header>
+
+    <main class="popup-content">
+      <!-- View Mode Section -->
+      <section class="section view-mode-section">
+        <h2>View Mode</h2>
+        <div class="button-group">
+          <button id="publicViewBtn" class="view-btn" data-mode="public">
+            <span class="icon">👀</span>
+            <span>Public View</span>
+          </button>
+          <button id="userViewBtn" class="view-btn active" data-mode="user">
+            <span class="icon">🔒</span>
+            <span>User View</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section class="section settings-section">
+        <h2>Settings</h2>
+        <div class="setting-item">
+          <label for="darkModeToggle">
+            <span>Dark Mode</span>
+            <input type="checkbox" id="darkModeToggle" class="toggle-switch">
+          </label>
+        </div>
+        <div class="setting-item">
+          <label for="autoHidePrivate">
+            <span>Auto-hide Private Tracks</span>
+            <input type="checkbox" id="autoHidePrivate" class="toggle-switch">
+          </label>
+        </div>
+        <div class="setting-item">
+          <label for="showStats">
+            <span>Show Hover Stats</span>
+            <input type="checkbox" id="showStats" class="toggle-switch" checked>
+          </label>
+        </div>
+      </section>
+
+      <!-- Account Switcher Section -->
+      <section class="section accounts-section">
+        <h2>Account Switcher</h2>
+        <div id="accountsList" class="accounts-list">
+          <div class="loading">Loading accounts...</div>
+        </div>
+        <button id="addAccountBtn" class="btn btn-primary">
+          <span class="icon">➕</span>
+          <span>Add Current Account</span>
+        </button>
+      </section>
+
+      <!-- Actions Section -->
+      <section class="section actions-section">
+        <button id="copyUrlBtn" class="btn btn-secondary">
+          <span class="icon">📋</span>
+          <span>Copy Public URL</span>
+        </button>
+        <button id="clearCacheBtn" class="btn btn-secondary">
+          <span class="icon">🗑️</span>
+          <span>Clear Cache</span>
+        </button>
+      </section>
+    </main>
+
+    <footer class="popup-footer">
+      <div class="auth-status" id="authStatus">
+        <span class="status-icon">●</span>
+        <span class="status-text">Checking...</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="helpLink">Help</a>
+        <span class="separator">•</span>
+        <a href="#" id="feedbackLink">Feedback</a>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html> 

@@ -1,0 +1,378 @@
+/**
+ * Styles for SoundSwitch popup
+ * Modern, clean design following Material Design principles
+ * @see docs/webstore_best_practices.md - UI best practices
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 380px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+}
+
+/* Header */
+.popup-header {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.version {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Main Content */
+.popup-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.setting-section {
+  margin-bottom: 24px;
+}
+
+.setting-section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Account Switcher */
+.accounts-container {
+  background: white;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.accounts-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.account-item:hover {
+  background: #f5f5f5;
+}
+
+.account-item.active {
+  background: #fff3e0;
+  border: 1px solid #ff6b35;
+}
+
+.account-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  background: #e0e0e0;
+}
+
+.account-info {
+  flex: 1;
+}
+
+.account-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.account-username {
+  font-size: 12px;
+  color: #666;
+}
+
+.account-actions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.account-item:hover .account-actions {
+  opacity: 1;
+}
+
+.account-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.account-action-btn:hover {
+  transform: scale(1.2);
+}
+
+.add-account-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* View Mode Toggle */
+.view-mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.view-btn {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.view-btn:hover {
+  border-color: #ff6b35;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.view-btn.active {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+  border-color: transparent;
+  color: white;
+}
+
+.view-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.view-label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.view-desc {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* Features */
+.feature-list {
+  background: white;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.feature-item:hover {
+  background: #f5f5f5;
+}
+
+.feature-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.feature-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.feature-icon {
+  font-size: 16px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.action-btn {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-btn:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.action-btn span {
+  font-size: 16px;
+}
+
+/* Status Section */
+.status-section {
+  margin-top: auto;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.status-icon {
+  font-size: 16px;
+}
+
+.status-item.authenticated .status-icon {
+  color: #4caf50;
+}
+
+.status-item.error .status-icon {
+  color: #f44336;
+}
+
+/* Footer */
+.popup-footer {
+  padding: 16px 20px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.popup-footer a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.popup-footer a:hover {
+  color: #ff6b35;
+}
+
+.separator {
+  color: #ccc;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.setting-section {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #f0f0f0;
+  border-radius: 4px;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background: #ff6b35;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Scrollbar styling for accounts list */
+.accounts-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.accounts-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.accounts-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.accounts-list::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

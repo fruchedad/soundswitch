@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundSwitch Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <h1>SoundSwitch</h1>
+      <span class="version">v1.0.0</span>
+    </header>
+
+    <!-- Main Content -->
+    <main class="popup-content">
+      <!-- Account Switcher -->
+      <section class="setting-section">
+        <h2>Accounts</h2>
+        <div class="accounts-container">
+          <div id="accountsList" class="accounts-list">
+            <!-- Accounts will be dynamically added here -->
+          </div>
+          <button id="addAccountBtn" class="action-btn add-account-btn">
+            <span>➕</span> Save Current Account
+          </button>
+        </div>
+      </section>
+
+      <!-- View Mode Toggle -->
+      <section class="setting-section">
+        <h2>View Mode</h2>
+        <div class="view-mode-toggle">
+          <button id="publicViewBtn" class="view-btn" data-mode="public">
+            <span class="view-icon">👀</span>
+            <span class="view-label">Public View</span>
+            <span class="view-desc">See profile as visitors do</span>
+          </button>
+          <button id="userViewBtn" class="view-btn" data-mode="user">
+            <span class="view-icon">🔒</span>
+            <span class="view-label">User View</span>
+            <span class="view-desc">See your full profile</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="setting-section">
+        <h2>Features</h2>
+        <div class="feature-list">
+          <label class="feature-item">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="feature-label">
+              <span class="feature-icon">🌙</span>
+              Dark Mode
+            </span>
+          </label>
+          <label class="feature-item">
+            <input type="checkbox" id="autoHidePrivate" checked>
+            <span class="feature-label">
+              <span class="feature-icon">🔓</span>
+              Auto-hide Private Tracks
+            </span>
+          </label>
+          <label class="feature-item">
+            <input type="checkbox" id="showStats" checked>
+            <span class="feature-label">
+              <span class="feature-icon">📊</span>
+              Show Follower Growth Stats
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="setting-section">
+        <h2>Quick Actions</h2>
+        <div class="action-buttons">
+          <button id="copyUrlBtn" class="action-btn">
+            <span>📋</span> Copy Current Profile URL
+          </button>
+          <button id="clearCacheBtn" class="action-btn">
+            <span>🗑️</span> Clear Stats Cache
+          </button>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <section class="status-section">
+        <div id="authStatus" class="status-item">
+          <span class="status-icon">🔐</span>
+          <span class="status-text">Checking authentication...</span>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <a href="#" id="helpLink">Help</a>
+      <span class="separator">•</span>
+      <a href="#" id="feedbackLink">Feedback</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html> 
