@@ -10,8 +10,10 @@
   <div class="popup-container">
     <!-- Header -->
     <header class="popup-header">
-      <h1>SoundSwitch</h1>
-      <span class="version">v1.0.0</span>
+      <div>
+        <h1>SoundSwitch</h1>
+        <span class="version">v1.0.0</span>
+      </div>
     </header>
 
     <!-- Main Content -->
@@ -23,8 +25,9 @@
           <div id="accountsList" class="accounts-list">
             <!-- Accounts will be dynamically added here -->
           </div>
-          <button id="addAccountBtn" class="action-btn add-account-btn">
-            <span>➕</span> Save Current Account
+          <button id="addAccountBtn" class="add-account-btn" type="button">
+            <span>➕</span>
+            <span>Save Current Account</span>
           </button>
         </div>
       </section>
@@ -32,14 +35,14 @@
       <!-- View Mode Toggle -->
       <section class="setting-section">
         <h2>View Mode</h2>
-        <div class="view-mode-toggle">
-          <button id="publicViewBtn" class="view-btn" data-mode="public">
-            <span class="view-icon">👀</span>
+        <div class="view-mode-toggle" role="tablist">
+          <button id="publicViewBtn" class="view-btn" data-mode="public" type="button" role="tab" aria-selected="false">
+            <span class="view-icon" aria-hidden="true">👀</span>
             <span class="view-label">Public View</span>
             <span class="view-desc">See profile as visitors do</span>
           </button>
-          <button id="userViewBtn" class="view-btn" data-mode="user">
-            <span class="view-icon">🔒</span>
+          <button id="userViewBtn" class="view-btn" data-mode="user" type="button" role="tab" aria-selected="true">
+            <span class="view-icon" aria-hidden="true">🔒</span>
             <span class="view-label">User View</span>
             <span class="view-desc">See your full profile</span>
           </button>
@@ -49,26 +52,26 @@
       <!-- Features -->
       <section class="setting-section">
         <h2>Features</h2>
-        <div class="feature-list">
+        <div class="feature-list" role="group" aria-labelledby="features-heading">
           <label class="feature-item">
-            <input type="checkbox" id="darkModeToggle">
+            <input type="checkbox" id="darkModeToggle" aria-describedby="dark-mode-desc">
             <span class="feature-label">
-              <span class="feature-icon">🌙</span>
-              Dark Mode
+              <span class="feature-icon" aria-hidden="true">🌙</span>
+              <span>Dark Mode</span>
             </span>
           </label>
           <label class="feature-item">
-            <input type="checkbox" id="autoHidePrivate" checked>
+            <input type="checkbox" id="autoHidePrivate" checked aria-describedby="auto-hide-desc">
             <span class="feature-label">
-              <span class="feature-icon">🔓</span>
-              Auto-hide Private Tracks
+              <span class="feature-icon" aria-hidden="true">🔓</span>
+              <span>Auto-hide Private Tracks</span>
             </span>
           </label>
           <label class="feature-item">
-            <input type="checkbox" id="showStats" checked>
+            <input type="checkbox" id="showStats" checked aria-describedby="show-stats-desc">
             <span class="feature-label">
-              <span class="feature-icon">📊</span>
-              Show Follower Growth Stats
+              <span class="feature-icon" aria-hidden="true">📊</span>
+              <span>Show Follower Growth Stats</span>
             </span>
           </label>
         </div>
@@ -78,19 +81,21 @@
       <section class="setting-section">
         <h2>Quick Actions</h2>
         <div class="action-buttons">
-          <button id="copyUrlBtn" class="action-btn">
-            <span>📋</span> Copy Current Profile URL
+          <button id="copyUrlBtn" class="action-btn" type="button">
+            <span aria-hidden="true">📋</span>
+            <span>Copy Current Profile URL</span>
           </button>
-          <button id="clearCacheBtn" class="action-btn">
-            <span>🗑️</span> Clear Stats Cache
+          <button id="clearCacheBtn" class="action-btn" type="button">
+            <span aria-hidden="true">🗑️</span>
+            <span>Clear Stats Cache</span>
           </button>
         </div>
       </section>
 
       <!-- Status -->
       <section class="status-section">
-        <div id="authStatus" class="status-item">
-          <span class="status-icon">🔐</span>
+        <div id="authStatus" class="status-item" role="status" aria-live="polite">
+          <span class="status-icon" aria-hidden="true">🔐</span>
           <span class="status-text">Checking authentication...</span>
         </div>
       </section>
@@ -99,7 +104,7 @@
     <!-- Footer -->
     <footer class="popup-footer">
       <a href="#" id="helpLink">Help</a>
-      <span class="separator">•</span>
+      <span class="separator" aria-hidden="true">•</span>
       <a href="#" id="feedbackLink">Feedback</a>
     </footer>
   </div>
