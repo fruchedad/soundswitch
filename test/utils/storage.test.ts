@@ -7,7 +7,6 @@ import {
   clearStorage,
   initializeStorage,
   CacheManager,
-  STORAGE_KEYS,
   DEFAULT_STORAGE
 } from '../../src/utils/storage';
 
@@ -15,16 +14,16 @@ describe('Storage Utils', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // Reset chrome.storage.local mock
-    global.chrome.storage.local.get.mockReset();
-    global.chrome.storage.local.set.mockReset();
-    global.chrome.storage.local.remove.mockReset();
-    global.chrome.storage.local.clear.mockReset();
+    ((global.chrome.storage.local.get as any) as any).mockReset();
+    ((global.chrome.storage.local.set as any) as any).mockReset();
+    ((global.chrome.storage.local.remove as any) as any).mockReset();
+    ((global.chrome.storage.local.clear as any) as any).mockReset();
   });
 
   describe('getStorageValue', () => {
     it('should get a value from storage', async () => {
       const mockData = { testKey: 'testValue' };
-      global.chrome.storage.local.get.mockResolvedValue(mockData);
+      (global.chrome.storage.local.get as any).mockResolvedValue(mockData);
 
       const result = await getStorageValue('testKey');
       
@@ -33,7 +32,7 @@ describe('Storage Utils', () => {
     });
 
     it('should return null if key does not exist', async () => {
-      global.chrome.storage.local.get.mockResolvedValue({});
+      (global.chrome.storage.local.get as any).mockResolvedValue({});
 
       const result = await getStorageValue('nonExistentKey');
       
@@ -41,7 +40,7 @@ describe('Storage Utils', () => {
     });
 
     it('should handle errors gracefully', async () => {
-      global.chrome.storage.local.get.mockRejectedValue(new Error('Storage error'));
+      (global.chrome.storage.local.get as any).mockRejectedValue(new Error('Storage error'));
 
       const result = await getStorageValue('testKey');
       
@@ -51,7 +50,7 @@ describe('Storage Utils', () => {
 
   describe('setStorageValue', () => {
     it('should set a value in storage', async () => {
-      global.chrome.storage.local.set.mockResolvedValue(undefined);
+      (global.chrome.storage.local.set as any).mockResolvedValue(undefined);
 
       await setStorageValue('testKey', 'testValue');
       
@@ -59,7 +58,7 @@ describe('Storage Utils', () => {
     });
 
     it('should handle errors gracefully', async () => {
-      global.chrome.storage.local.set.mockRejectedValue(new Error('Storage error'));
+      (global.chrome.storage.local.set as any).mockRejectedValue(new Error('Storage error'));
 
       // Should not throw and returns false on error
       const result = await setStorageValue('testKey', 'testValue');
@@ -70,7 +69,7 @@ describe('Storage Utils', () => {
   describe('getStorageValues', () => {
     it('should get multiple values from storage', async () => {
       const mockData = { key1: 'value1', key2: 'value2' };
-      global.chrome.storage.local.get.mockResolvedValue(mockData);
+      (global.chrome.storage.local.get as any).mockResolvedValue(mockData);
 
       const result = await getStorageValues(['key1', 'key2']);
       
@@ -79,7 +78,7 @@ describe('Storage Utils', () => {
     });
 
     it('should return empty object on error', async () => {
-      global.chrome.storage.local.get.mockRejectedValue(new Error('Storage error'));
+      (global.chrome.storage.local.get as any).mockRejectedValue(new Error('Storage error'));
 
       const result = await getStorageValues(['key1', 'key2']);
       
@@ -89,7 +88,7 @@ describe('Storage Utils', () => {
 
   describe('removeStorageValue', () => {
     it('should remove a value from storage', async () => {
-      global.chrome.storage.local.remove.mockResolvedValue(undefined);
+      (global.chrome.storage.local.remove as any).mockResolvedValue(undefined);
 
       await removeStorageValue('testKey');
       
@@ -97,7 +96,7 @@ describe('Storage Utils', () => {
     });
 
     it('should handle errors gracefully', async () => {
-      global.chrome.storage.local.remove.mockRejectedValue(new Error('Storage error'));
+      (global.chrome.storage.local.remove as any).mockRejectedValue(new Error('Storage error'));
 
       // Should not throw and returns false on error
       const result = await removeStorageValue('testKey');
@@ -107,7 +106,7 @@ describe('Storage Utils', () => {
 
   describe('clearStorage', () => {
     it('should clear all storage', async () => {
-      global.chrome.storage.local.clear.mockResolvedValue(undefined);
+      (global.chrome.storage.local.clear as any).mockResolvedValue(undefined);
 
       await clearStorage();
       
@@ -115,7 +114,7 @@ describe('Storage Utils', () => {
     });
 
     it('should handle errors gracefully', async () => {
-      global.chrome.storage.local.clear.mockRejectedValue(new Error('Storage error'));
+      (global.chrome.storage.local.clear as any).mockRejectedValue(new Error('Storage error'));
 
       // Should not throw and returns false on error
       const result = await clearStorage();
@@ -125,8 +124,8 @@ describe('Storage Utils', () => {
 
   describe('initializeStorage', () => {
     it('should initialize storage with defaults if empty', async () => {
-      global.chrome.storage.local.get.mockResolvedValue({});
-      global.chrome.storage.local.set.mockResolvedValue(undefined);
+      (global.chrome.storage.local.get as any).mockResolvedValue({});
+      (global.chrome.storage.local.set as any).mockResolvedValue(undefined);
 
       await initializeStorage();
       
@@ -141,7 +140,7 @@ describe('Storage Utils', () => {
         accounts: {},
         activeAccount: null
       };
-      global.chrome.storage.local.get.mockResolvedValue(existingData);
+      (global.chrome.storage.local.get as any).mockResolvedValue(existingData);
 
       await initializeStorage();
       
@@ -153,8 +152,8 @@ describe('Storage Utils', () => {
 describe('CacheManager', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    global.chrome.storage.local.get.mockReset();
-    global.chrome.storage.local.set.mockReset();
+    (global.chrome.storage.local.get as any).mockReset();
+    (global.chrome.storage.local.set as any).mockReset();
   });
 
   describe('getCachedData', () => {
@@ -164,7 +163,7 @@ describe('CacheManager', () => {
         timestamp: Date.now() - 1000 // 1 second ago
       };
       
-      global.chrome.storage.local.get.mockResolvedValue({
+      (global.chrome.storage.local.get as any).mockResolvedValue({
         statsCache: { testKey: cachedData }
       });
 
@@ -179,7 +178,7 @@ describe('CacheManager', () => {
         timestamp: Date.now() - (6 * 60 * 1000) // 6 minutes ago
       };
       
-      global.chrome.storage.local.get.mockResolvedValue({
+      (global.chrome.storage.local.get as any).mockResolvedValue({
         statsCache: { testKey: cachedData }
       });
 
@@ -189,7 +188,7 @@ describe('CacheManager', () => {
     });
 
     it('should return null if no cache exists', async () => {
-      global.chrome.storage.local.get.mockResolvedValue({});
+      (global.chrome.storage.local.get as any).mockResolvedValue({});
 
       const result = await CacheManager.getCachedData('testKey');
       
@@ -199,8 +198,8 @@ describe('CacheManager', () => {
 
   describe('setCachedData', () => {
     it('should set cached data with timestamp', async () => {
-      global.chrome.storage.local.get.mockResolvedValue({ statsCache: {} });
-      global.chrome.storage.local.set.mockResolvedValue(undefined);
+      (global.chrome.storage.local.get as any).mockResolvedValue({ statsCache: {} });
+      (global.chrome.storage.local.set as any).mockResolvedValue(undefined);
 
       const testData = { test: 'value' };
       await CacheManager.setCachedData('testKey', testData);
@@ -218,7 +217,7 @@ describe('CacheManager', () => {
 
   describe('clearCache', () => {
     it('should clear all cache', async () => {
-      global.chrome.storage.local.set.mockResolvedValue(undefined);
+      (global.chrome.storage.local.set as any).mockResolvedValue(undefined);
 
       await CacheManager.clearCache();
       
@@ -239,8 +238,8 @@ describe('CacheManager', () => {
         }
       };
       
-      global.chrome.storage.local.get.mockResolvedValue({ statsCache: cache });
-      global.chrome.storage.local.set.mockResolvedValue(undefined);
+      (global.chrome.storage.local.get as any).mockResolvedValue({ statsCache: cache });
+      (global.chrome.storage.local.set as any).mockResolvedValue(undefined);
 
       await CacheManager.cleanupExpiredCache();
       
