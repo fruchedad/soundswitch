@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build.js",
+    "build:dev": "NODE_ENV=development node scripts/build.js",
+    "build:analyze": "NODE_ENV=production ANALYZE=true node scripts/build.js",
     "build:vite": "vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx,ts,tsx --fix && stylelint 'src/**/*.css' --fix",
@@ -23,7 +25,10 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,md}'",
     "format:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,md}'",
     "prepare": "husky install",
-    "debug:pipeline": "./scripts/debug-pipeline.sh"
+    "debug:pipeline": "./scripts/debug-pipeline.sh",
+    "perf:build": "NODE_ENV=production npm run build && echo 'Build report generated in dist/build-report.json'",
+    "perf:analyze": "npm run build:analyze && cat dist/build-report.json | jq '.bundleSizes'",
+    "perf:compare": "npm run perf:build && node -e \"const report = require('./dist/build-report.json'); console.log('Total size:', (report.totalSize/1024).toFixed(2), 'KB'); console.log('JS size:', ((report.bundleSizes['background.js'] + report.bundleSizes['content.js'] + report.bundleSizes['popup.js'])/1024).toFixed(2), 'KB');\""
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",

@@ -22,9 +22,12 @@
     ],
     "outDir": "dist",
     "rootDir": ".",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "removeComments": true,
+    "importsNotUsedAsValues": "remove",
+    "experimentalDecorators": false
   },
   "include": [
     "src/**/*.ts"
@@ -33,6 +36,7 @@
     "node_modules",
     "dist",
     "test",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "**/*.spec.ts"
   ]
 }
