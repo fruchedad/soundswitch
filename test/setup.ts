@@ -1,5 +1,5 @@
 // Test setup for Vitest
-import { beforeAll, afterAll } from 'vitest';
+import { beforeAll, afterAll, vi } from 'vitest';
 
 // Mock Chrome extension APIs for testing
 const chromeMock = {
@@ -51,6 +51,8 @@ const chromeMock = {
 // Setup global mocks
 beforeAll(() => {
   global.chrome = chromeMock as any;
+  // Type the global chrome object properly
+  (global as any).chrome = chromeMock;
   // Mock console to prevent noise in tests
   global.console = {
     ...console,

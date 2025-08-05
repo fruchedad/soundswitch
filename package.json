@@ -45,7 +45,7 @@
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard": "^29.0.0",
-    "typescript": "^5.3.0",
+    "typescript": "^5.3.3",
     "vite": "^5.1.0",
     "vite-plugin-web-extension": "^4.4.4",
     "vitest": "^1.2.0"
